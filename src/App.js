@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import axios from "axios";
 
 class App extends React.Component {
-  state = {advice: " "};
+  state = {advice: " "}; // Used to store the returned API data.
 
   componentDidMount() { // Sync function.
     this.fetchAdvice();
@@ -12,7 +12,7 @@ class App extends React.Component {
   fetchAdvice = () => {
     axios.get("https://api.adviceslip.com/advice") // Getting data from API.
     .then((response) => {
-      const {advice} = response.data.slip;
+      const {advice} = response.data.slip; // Storing API data in a State.
       this.setState({advice: advice});
     })
     .catch((error) => {
@@ -31,4 +31,5 @@ class App extends React.Component {
     );
   }
 }
+
 export default App;
